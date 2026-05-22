@@ -9,7 +9,7 @@ from torchvision import transforms
 
 import torch.nn as nn
 
-class MyNet(nn.Module):
+class NeuralNetwork(nn.Module):
     def __init__(self, num_classes=37):
         super().__init__()
         self.features = nn.Sequential(
@@ -82,7 +82,7 @@ import os
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print("Training on device:", device)
 
-model = MyNet().to(device)
+model = NeuralNetwork().to(device)
 if os.path.exists("model.pth"):
     model.load_state_dict(torch.load("model.pth", weights_only=True))
     print("Loaded saved model weights.")
