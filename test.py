@@ -108,3 +108,10 @@ def evaluate(model, loader):
 
 test_acc = evaluate(model, test_loader)
 print(f"Test accuracy:{test_acc}")
+
+
+#%%
+total_params = sum(p.numel() for p in model.parameters())
+print("Total parameters:", total_params)
+
+# %%
