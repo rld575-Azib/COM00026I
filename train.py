@@ -70,7 +70,7 @@ full_trainval = datasets.OxfordIIITPet(root="data", split="trainval",
                               target_types="category",
                               transform=train_tf, download=True)
 
-# Carve a validation set off trainval (test stays sealed)
+# Carve a validation set off trainval
 val_size = int(0.2 * len(full_trainval))
 train_size = len(full_trainval) - val_size
 train_set, val_set = random_split(full_trainval, [train_size, val_size])
@@ -78,11 +78,11 @@ train_set, val_set = random_split(full_trainval, [train_size, val_size])
 train_loader = DataLoader(train_set, batch_size=32, shuffle=True)
 val_loader   = DataLoader(val_set, batch_size=32)
 
-# Sanity check: pull one batch and look at the shape
+# pull one batch and look at the shape
 images, labels = next(iter(train_loader))
-print("batch shape:", images.shape)   # expect [32, 3, 64, 64]
+print("batch shape:", images.shape)
 print("labels:", labels[:8])
-print("num classes:", len(full_trainval.classes))  # expect 37
+print("num classes:", len(full_trainval.classes))
 
 import torch.nn as nn
 import os
